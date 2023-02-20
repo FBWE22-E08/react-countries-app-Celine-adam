@@ -1,17 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AllCountries from "./components/views/AllCountries";
-import ByRegion from "./components/views/ByRegion";
-import ByName from "./components/views/ByName";
 import Header from "./components/Header";
+import AllCountries from "./components/views/AllCountries";
+import ByName from "./components/views/ByName";
+import ByRegion from "./components/views/ByRegion";
 import NotFound from "./components/NotFound";
 
 function App() {
-
   return (
     <div className="App">
-{/* show the Header component, then add the routes to the pages components*/}
-
-   App component
+      <Header />
+      <Routes>
+        <Route path="/" element={<AllCountries />} />
+        <Route path="/byName" element={<ByName />} />
+        <Route path="/byRegion" element={<ByRegion />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
