@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CountryCard from "../CountryCard";
 
 export default function ByRegion() {
@@ -8,13 +8,14 @@ export default function ByRegion() {
   const [countries, setCountries] = useState([]);
 
   const handleChange = (e) => {
-    setRegion(e.target.value.value);
-
+    setRegion(e.target.value);
+  };
+  useEffect(() => {
     fetch(`https://restcountries.com/v2/region/${region}`)
       .then((response) => response.json())
       .then((date) => setCountries(date));
     console.log(countries);
-  };
+  }, [region]);
 
   return (
     <div>
@@ -29,7 +30,7 @@ export default function ByRegion() {
       <input
         type={"radio"}
         name="region"
-        value="America"
+        value="Americas"
         onChange={handleChange}
       />
       <label style={{ marginRight: "15px" }}>America</label>
