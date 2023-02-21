@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function CountryCard({ country }) {
   //name,capital,flag,area,population
@@ -13,8 +14,10 @@ export default function CountryCard({ country }) {
         marginBottom: "20px",
       }}
     >
-      <img src={country.flag} alt={country.name} width="200px"/>
-      <h1>{country.name}</h1>
+      <img src={country.flag} alt={country.name} width="200px" />
+      <NavLink to={`/country/${country.alpha2Code}`}>
+        <h1>{country.name}</h1>
+      </NavLink>
       <span style={{ fontSize: "27px" }}>
         <b>Capital:</b> {country.capital}
       </span>
